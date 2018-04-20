@@ -1,0 +1,3 @@
+1 dialog 要设置主题 动画也在主题里面设置
+2 给dialog设置自定义布局 要把里面的view都设置为确定的宽高值 不能为wrap_content
+3 设置dialog宽高属性等要用getWindow.getAttribute 获取属性后设置

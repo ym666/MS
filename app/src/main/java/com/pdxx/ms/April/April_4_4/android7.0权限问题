@@ -1,0 +1,9 @@
+7.0之后文件有一个保护机制 如果不处理 再调用相册的时候就会出现FileExposeUriException
+
+第一步 再res文件夹新建xml文件 随便命名
+第二步 xml里 写上<path>标签 子元素根据内存的种类不同而不同 一般为<external-path name = "" path = "">
+name 随便写 path为目录的名称
+第三步 manifest 里 注册provider
+最后 在需要这个文件的地方把Uri = Uri.from(File) 换成 FileProvider.getUriForFile
+
+如果第三方SDK已经注册了FileProvider 那么我们新建一个类继承FileProvider就好了

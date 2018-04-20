@@ -1,0 +1,13 @@
+map 用于将一个对象转换为另一个对象
+应用场景 接口返回的json转化为bean后，与我们需要的bean不一致
+
+flatmap 用于将一个observable转化为多个observable然后再合并为一个，不保证事件的顺序
+应用场景 嵌套请求 先执行A请求，再执行为B请求。就可以把A observable flatmap为B observable
+
+concatMap 跟flatmap一样 只是有了顺序
+
+zip 用于将多个observable合并为一个observable
+应用场景 UI更新需要多个接口的结果，就可以将多个observable用zip合为一个，然后再一起请求
+
+flowable 上游发送数据过快下游来不及处理 需要用到背压
+

@@ -1,0 +1,13 @@
+1、不要在UI线程中进行耗时操作
+2 结合activity和fragment生命周期对耗内存的变量清空
+比如cursor bitmap
+3 listview优化 结合contentview复用以及viewholder 使用recyclerview
+ListView的背景色与cacheColorHint设置相同颜色，可以提高滑动时的渲染性能
+getView中不要进行复杂的操作，否则会影响滑动性能。
+分页加载
+4 图片优化，与glide结合，展示图片
+5 数据优化
+6 IO
+7 启动新的activity慢 不要再onPause里进行耗时操作
+8 代码优化 不要创建一些不必要的变量 多用static final生命一些不变的基本类型或者String
+使用StringBuiler代替String

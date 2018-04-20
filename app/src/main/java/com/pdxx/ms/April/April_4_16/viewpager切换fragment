@@ -1,0 +1,11 @@
+
+在进一个activity时，会把整个fragment视图缓存，但不能联网
+所以设setOffscreenPageLimit 为fragment.size -1
+
+
+viewpager 具有缓存机制 会缓存本页跟下一页
+初始化 会加载两个fragment的声明周期，但是只有可视的fragment会setviewhint=true
+
+当切换到第二页时，调用第一页setUserVisibleHint设为false，并走第三页的生命周期
+
+当切换到第三页，调用第一页的结束周期，并调用第三页的setUserVisibleHint为true，设第二页为false

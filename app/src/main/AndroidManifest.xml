@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.pdxx.ms">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application
+        android:name=".April.April_4_4.App"
+        android:allowBackup="true"
+        android:icon="${app_icon}"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity android:name=".MainActivity" />
+        <activity android:name=".MAR.MAR_3_15.NotificationActivity"></activity>
+        <activity android:name=".MAR.MAR_3_15.EventBusTest1Activity" />
+        <activity android:name=".MAR.MAR_3_15.EventBusTest2Activity" />
+        <activity android:name=".MAR.MAR_3_19.HttpTestActivity" />
+        <activity android:name=".MAR.MAR_3_20.OkHttpTestActivity" />
+
+        <activity android:name=".April.April_4_3.Retrofit2TestActivity" />
+
+        <activity android:name=".April.April_4_4.PhotoTestActivity" />
+
+        <activity android:name=".April.April_4_8.FileTestActivity" />
+
+
+        <activity android:name=".April.April_4_11.LanchModeTest1Activity">
+
+        </activity>
+        <activity
+            android:name=".April.April_4_11.LanchModeTest3Activity"
+            android:launchMode="singleTask" />
+        <activity android:name=".April.April_4_11.LanchModeTest2Activity" />
+        <activity android:name=".April.April_4_16.ViewPagerTestActivity">
+
+        </activity>
+        <activity android:name=".April.April_4_16.ChangeFragmentActivity">
+
+        </activity>
+        <activity android:name=".April.April_4_17.AsyncTaskActivity">
+
+        </activity>
+        <activity android:name=".April.April_4_18.MvpTestActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="hehe"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/img" />
+        </provider>
+
+    </application>
+
+</manifest>

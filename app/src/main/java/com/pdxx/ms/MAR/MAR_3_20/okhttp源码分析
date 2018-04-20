@@ -1,0 +1,11 @@
+okhttpclient okhttp客户端类，采用builder建造者方式构建对象
+重要的参数：readTimeout writeTimeout connectTimeout
+
+Dispatcher 异步请求执行的政策，每一个dispatcher在执行call时在内部运行一个ExecutorService
+相当于个队列，管理着网络线程。包括runningAsyncCalls readyAsyncCalls runningSyncCalls
+
+ExecutorService 在新线程中执行call
+
+Interceptor 拦截器
+
+RealCall Call的实现类

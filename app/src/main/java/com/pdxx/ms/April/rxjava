@@ -1,0 +1,53 @@
+rxjava
+关键字
+observable 被观察者
+observer 观察者
+subscribe 订阅
+
+observable.subscribe.observer
+被观察者 被订阅 观察者
+
+事件 event 方法 onNext onComplete onError onSubscribe(Rxjava2新增，传递Disposable，相当于rxjava1的subscribtion，用于解除订阅)
+
+rxjava 创建只有三点
+1 创建观察者 observer 决定事件发生后产生的行为 有三个回调方法 onNext onComplete onError
+    observer 的抽象类 subscriber 对observer进行了一波拓展，本质相同
+    subscriber增加了 onStart unSubscriber 取消订阅
+    rxjava2 新增 Flowable
+2 创建被观察者 observable Observable.create(new Observable.onSubscribe)
+       obSubscribe 相当于一个计划表 被订阅的时候 里面的 call会调用 事件依次发送
+                Observable.just 将传入的参数依次发送
+                Observable.form 将传入的对象集合拆分成对象依次发送
+
+3 订阅 observable.subscribe.observer
+        整个过程 先创建 observable 再调用 observer的onStart 然后再subscribe 最后依次发送事件
+
+除了subscribe（observer） 还支持简单的回调 比如Action1
+
+Scheduler 线程调度器
+Scheduler.immediate 直接在当前线程运行
+Scheduler.newThread 总是启用新线程
+Scheduler.io         io操作使用的线程，和newThread差不多
+Scheduler.computation 计算所使用的
+Android.mainThread android特有的UI线程
+线程控制方法
+subscribeOn 事件产生线程
+observeOn    事件消费线程
+
+变换 将事件对象转变成另一个事件对象
+map()
+
+flatMap()
+
+这两个方法都是将一个对象转换成另一个对象，区别在于flatMap返回的是一个observable，并且这个observable对象不是直接
+发送到subscriber方法回调中，而是将它激活发送事件，每一个发送的事件都被汇总到一个observable中统一发送到subscriber
+回调方法中
+
+throttleFirst 在一定时间间隔内丢弃掉新的时间，常用作抖动过滤
+
+lift（operator）
+将observable转换成另一个observable
+
+compose（transformer） 将一个observable转换成另一个observable 参数的transformer是一种规则
+
+

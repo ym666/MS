@@ -1,0 +1,30 @@
+6.0之后针对权限要单独申请，动态权限管理
+如果targetapi在23之下则不需要
+
+权限分为普通权限跟危险权限
+普通权限自动分配
+例如 wifistate networkstate 蓝牙 nfc 等
+
+危险权限 我们必须动态申请
+例如 日历 相机 定位 内存 联系人 录音 readphonestate 传感器 sms
+这些权限是分组的 如果一组内一个权限申请成功 那么其他权限就会自动申请成功
+
+权限检查 ContextCompat.checkSelfPermission
+权限申请 写一个要申请权限的String[] 数组 然后调用ActivityCompat.requestPermissions
+权限回调 onRequestPermissionResult
+权限再次申请 ActivityCompat.shouldShowRequestPermissionRationale
+
+用户选择不再提示后，需自己记录一下用户的操作，然后跳转到设置界面
+https://juejin.im/entry/5858d0578e450a006c7ec53f
+
+权限框架permissionsdispatcher
+采用注解方式申请权限
+@RunTimePermission
+拒绝
+@onPermissionDenied
+同意
+@needsPermission
+再次申请
+@OnShowRationale
+
+Hipermission

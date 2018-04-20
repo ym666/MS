@@ -1,0 +1,43 @@
+江苏住培（中医西医系统）江苏住培是一款给医院培训人员使用的管理软件，根据使用角色不同分为学员端、带教端
+、科主任端、教秘段、管理员端。在此款软件上能进行各种病例的登记以及数据的填写、审核维护等工作。
+
+整体使用okgo+okhttp3+eventbus+recyclerview+brvah，大致分为三个模块首页、消息以及个人中心。
+根据角色不同功能也不太相同。主要用到的技术有android6.0权限申请（permissionsdispatcher）、
+ android 7.0适配、病历、头像图片处理（imagePicker、photoview、LuBan、Glide）、自定义dotProgress显示培训进度、
+二维码扫描使用Zxing以便学生扫描考场、讲座等、tablayout与viewpager联动、android状态栏处理，高德定位SDK实现考勤功能，POI搜索附近医院，
+考试功能用webview与js联动（腾讯X5webview），数据审核动态数据recyclerview动态加载，
+学员成绩统计表MPAndroidChart实现、消息通讯用环信SDK+Jpush，友盟统计各医院使用情况，
+多渠道打包方便给各个客户使用不同版本
+
+I医考
+i医考是一款适用于从事或即将从事医疗卫生行业人员使用的APP应用、系统题库覆盖了包括人卫教材、“三基”训练、住院医师考核、
+住院医师公共科目考核、执业/助理医师考试及护理在内的各类型、各层级试题、有助于医疗卫生行业人员理论知识的提高。
+
+此款app类似于驾考宝典，是一款学员或者住院医师考试练习的软件。主要使用rxjava+retrofit+eventbus，大致分为首页消息，
+考试功能，社交功能。首页用recyclerview多条目加载banner以及新闻，考试项目。考试用viewpager+fragment+viewpagerScroller滑动答题
+，recyclerview弹出答题卡，记录viewpager滑动的位置缓存答案、收藏、纠错等信息，每个题目用shareSDK实现分享功能，
+用一个handler实现倒计时来控制时间。消息界面用Jpush+环信实现考友间即时通讯以及系统私信等功能。发现附近人用高德定位获取
+经纬度定位附近考友，考友间能关注来查看相互的地区、医院，并能互相通信。会员中心能用支付宝支付购买试卷，也可用兑换码兑换。
+
+
+临床技能考核pad端
+此app是一个pad项目，主要用于医院对考生进行考核打分。分为管理员端以及考官端。考官端分为扫码考试、考生列表以及
+打分页面。扫码用Zxing库扫码获得个人信息后跳转到个人信息界面。个人信息界面分为左右两个fragment，一边是信息一边是
+打分表，用eventBus通信。打完分后用okDownLoad实现下载上传试卷功能。管理员端用来对考场进行监控以及动态查询。
+首页采用drawLayout+fragment切换形式。日历部分采用CalendarView选择日历以及在日期上显示计划。通过接口回调方式进行
+刷新所有fragment信息。考场动态用cardview+FlexBoxLayout展示各个考场动态。考核成绩在fragment里面嵌套两个fragment，
+并用一个横着排列的recyclerview当做指示器来切换数据，在有信息异常时可以点击跳转到考官端查看打分信息。通过率界面主要
+是展示一个总体的考试情况，用recyclerview列表展示不同科室间的考试情况，每个条目分为折线图以及柱状图。
+
+
+技能清单
+1 具备良好的java功底，熟悉java常见设计模式
+2 熟练使用android各种控件UI，布局方式，有一定的自定义view基础
+3 熟练使用android开发框架，如okhttp、retrofit、glide等
+4 android多线程编程，熟悉handler、rxjava、asnycTask机制
+5 熟悉android性能优化，能用一定工具分析内存泄漏,性能调优，熟悉android屏幕适配、机型适配
+6 熟悉android多渠道打包，混淆，反编译，加固等安全技术，了解过gradle语言
+7 使用过各大第三方SDK，如支付宝、高德定位、shareSDK、Jpush、环信等
+8 熟练使用版本控制工具如svn、git，bug管理工具mantisBT、bugly
+9 了解android新技术，kotlin、插件化，热修复等
+

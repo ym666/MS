@@ -1,0 +1,4 @@
+component 通过module 将依赖类注入目标类
+
+component是一个接口 里面提供一个inject方法将presenter注入view
+module 通过provide注解提供view

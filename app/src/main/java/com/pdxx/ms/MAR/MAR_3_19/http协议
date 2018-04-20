@@ -1,0 +1,26 @@
+HttpUrlConnection  HttpClient
+
+ Http 是一个应用层面向对象的协议
+ 特点：简洁，快速；支持C/S模式；灵活，可以传输各种对象，由传输类型加以Content-Type标识；无连接；无状态；
+ 组成：请求行；请求报头；空行；请求数据
+ 请求行 Method Request-URI HTTP-Version CRLF
+ 响应数据 HTTP-VERSION Status-Code Reason-Phrase CRLF
+
+ POST / HTTP1.1   -------请求行
+ Host:www.wrox.com ------请求报头
+ User-Agent:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022)
+ Content-Type:application/x-www-form-urlencoded
+ Content-Length:40
+ Connection: Keep-Alive
+                        ---空行
+ name=Professional%20Ajax&publisher=Wiley ----请求数据
+
+ http响应消息Response
+
+ 分为状态行 消息报头 空行 响应正文
+
+ http响应码
+ 200 请求成功
+ 404 请求资源不存在
+
+ http://www.cnblogs.com/ranyonsue/p/5984001.html

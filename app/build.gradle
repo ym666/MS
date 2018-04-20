@@ -1,0 +1,127 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion "26.0.2"
+    defaultConfig {
+        applicationId "com.pdxx.ms"
+        minSdkVersion 14
+        targetSdkVersion 27
+        versionCode getVersionCode(false)
+        versionName getVersionName(true)
+        //版本名后面添加一句话，意思就是flavor dimension 它的维度就是该版本号，这样维度就是都是统一的了
+        flavorDimensions "versionCode"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        useLibrary 'org.apache.http.legacy'
+    }
+    signingConfigs {
+
+        //签名1
+        app1 {
+            keyAlias 'ms'//别名
+            keyPassword '123456'//别名密码
+            storeFile file('../ms.jks')//签名文件路径
+            storePassword '123456'//签名密码
+        }
+        //签名2
+        app2 {
+            keyAlias 'ms1'//别名
+            keyPassword '123456'//别名密码
+            storeFile file('../ms1.jks')//签名文件路径
+            storePassword '123456'//签名密码
+        }
+
+        //...你可以配置多个
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+        }
+    }
+
+    productFlavors {
+        app1 {
+            signingConfig signingConfigs.app1
+            manifestPlaceholders = [str: "releaseStr", package_name: "com.jswjw.test"]
+            applicationId "com.pdxx.ms"
+            resValue "string", "app_name", "江苏西医【测试】"
+            resValue "bool", "isrRank", 'true'
+            manifestPlaceholders = [ENVIRONMENT: "app1",
+                                    app_icon   : "@mipmap/icon_jsxy"]
+        }
+
+        app2 {
+            signingConfig signingConfigs.app2
+            manifestPlaceholders = [str: "devStr", package_name: "com.pdxx.zgj"]
+            applicationId "com.pdxx.zgj"
+            resValue "string", "app_name", "江苏中医【测试】"
+            resValue "bool", "isrRank", 'true'
+            manifestPlaceholders = [ENVIRONMENT: "app2",
+                                    app_icon   : "@mipmap/icon_jszy"]
+        }
+        app3 {
+            manifestPlaceholders = [str: "devStr", package_name: "com.pdxx.hbzp"]
+            applicationId "com.pdxx.hbzp"
+            resValue "string", "app_name", "湖北住培【测试】"
+            resValue "bool", "isrRank", 'true'
+            manifestPlaceholders = [ENVIRONMENT: "app3",
+                                    app_icon   : "@mipmap/icon_hbzp"]
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    defaultConfig {
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+    }
+}
+
+dependencies {
+
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:27.1.0'
+    testCompile 'junit:junit:4.12'
+    compile 'org.greenrobot:eventbus:3.1.1'
+    compile 'com.squareup.okhttp3:okhttp:3.9.1'
+    compile 'com.squareup.okio:okio:1.13.0'
+    compile 'io.reactivex.rxjava2:rxjava:2.1.12'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    compile 'com.github.bumptech.glide:glide:4.6.1'
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+}
+
+def getVersionName(boolean isRelease) {
+    if (isRelease) {
+        return "release_1.0.0";
+    } else {
+        return "1.1.1"
+    }
+}
+
+def getVersionCode(boolean isRelease) {
+    if (isRelease) {
+        return 1
+    } else {
+        return 3
+    }
+}

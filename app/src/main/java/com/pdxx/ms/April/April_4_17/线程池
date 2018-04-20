@@ -1,0 +1,13 @@
+
+方便管理线程
+
+Executors 创建线程池的工厂类
+Executor 接口
+ExecutorService
+ThreadPoolExecutor 自定义线程池
+
+
+AsyncTask 适用于多个并发的小线程
+异步任务三个组成部分：params，progress，result
+4步 onPreExecute doInBackground onProgressUpdate onPostExecute
+内部通过handler来处理工作线程和主线程的消息通信，封装了handler与线程池

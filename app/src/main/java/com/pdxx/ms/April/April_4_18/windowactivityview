@@ -1,0 +1,33 @@
+一个activity显示视图,其实是显示在window上
+setContentview 其实是window.setcontentview
+
+window
+被windowmanager管理，是个抽象类.window的参数通过windowmanager.layoutparams修改
+window分为层级，分为自定义window，子window，系统window
+
+phonewindow
+window的实现类，
+
+decorview
+根布局，唯一
+
+windowmanager
+通过IPC机制管理window,接口，实现类为windowmanagerimpl，windowmanagerGlobal
+
+view
+通过layoutInflater从xml里获取，然后添加到dectorview中
+
+activity
+activity启动流程是Binder向AMS发送请求，通过IPC启动acitivty。
+activity在attach方法中new了一个window，set了windowmanager
+在seContentiew中其实是getwindow.setContentview，调用的自身窗口的方法
+phonewindow的setContentview先增加decorview，然后再inflate，xml文件到contentParent（其实是个viewGroup）
+在这个过程中，activity其实是个管理者，负责把view显示在window上
+
+dialog
+dialog在启动过程中，构造方法里用到了外面activity传进来的context，set了外面activity.getservice的windowmanager
+在show的时候windowmanager.addview(mdectorview) 其实根本还是在acitivty的根view上添加view
+
+popwindow
+toast
+

@@ -1,0 +1,9 @@
+m model 数据
+v view activity、fragment
+p presenter 代理
+
+m跟P互相交互
+m跟P通过接口交互,m只要提供给P获取数据的方法，至于这个数据是怎么来的，p不关心
+
+p跟V互相交互
+p跟v通过接口交互，把从m得到的数据返回给V，至于这个数据怎么展示，p不关心
